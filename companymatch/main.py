@@ -57,6 +57,7 @@ def match_company_name():
                     dict_.update({"Copper link": copper_copy['COPPER_LINK'].iloc[match[2]]})
                     dict_.update({"Score": match[1]})
                     dict_.update({"Source": df_copy['Source'].iloc[i]})
+                    dict_.update({"Status": copper_copy['STATUS'].iloc[match[2]]})
             else:
                 dict_.update({"Input Name": df_copy['Original'].iloc[i]})
                 dict_.update({"Input Website": df_copy['Website'].iloc[i]})
@@ -65,6 +66,7 @@ def match_company_name():
                 dict_.update({"Copper link": "-"})
                 dict_.update({"Score": 0})
                 dict_.update({"Source": df_copy['Source'].iloc[i]})
+                dict_.update({"Status": "-"})
         else:
             dict_ = {}
             dict_.update({"Input Name": df_copy['Original'].iloc[i]})
@@ -74,6 +76,7 @@ def match_company_name():
             dict_.update({"Copper link": copper_copy['COPPER_LINK'].iloc[web_match[2]]})
             dict_.update({"Score": web_match[1]})
             dict_.update({"Source": df_copy['Source'].iloc[i]})
+            dict_.update({"Status": copper_copy['STATUS'].iloc[web_match[2]]})
         dict_list.append(dict_)
 
     merge_table = pd.DataFrame(dict_list)
@@ -131,4 +134,4 @@ def match_company_id(company_id):
 
 
 if __name__ == "__main__":
-    match_email()
+    match_company_name()
